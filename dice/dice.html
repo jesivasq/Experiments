@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Dice</title>
+
+	<style type="text/css">
+		
+
+		.die {
+			display: flex;
+		}
+
+		button {
+			width: 75px;
+			height: 50px;
+			margin: 5px;
+		}
+
+	</style>
+</head>
+<body>
+
+<div id="twenty" class="die">
+	<button id="d20">1d20</button>
+	<p id="p20"></p>
+</div>
+<div id="twelve" class="die">
+	<button id="d12">1d12</button>
+	<p id="p12"></p>
+</div>
+<div id="ten" class="die">
+	<button id="d10">1d10</button>
+	<p id="p10"></p>
+</div>
+<div id="eight" class="die">
+	<button id="d8">1d8</button>
+	<p id="p8"></p>
+</div>
+<div id="six" class="die">
+	<button id="d6">1d6</button>
+	<p id="p6"></p>
+</div>
+<div id="four" class="die">
+	<button id="d4">1d4</button>
+	<p id="p4"></p>
+</div>
+
+
+
+
+
+<!------------------------------->
+<script type="text/javascript">
+	
+	let diceArray = [20, 12, 10, 8, 6, 4];
+
+	for(i = 0; i < diceArray.length; i++){
+		let d = "d" + diceArray[i]; // the button
+		let p = "p" + diceArray[i]; // the paragraph
+		let n = diceArray[i];
+		document.getElementById(d).addEventListener("click", function(){
+				let result = rollDie(n);
+				updateResult(p, result);
+			});
+	}
+
+	function rollDie(sides){
+		return Math.floor(Math.random()*sides + 1);
+	}
+
+	function updateResult(elementID, result){
+		document.getElementById(elementID).innerHTML= result;
+	}
+
+</script>
+</body>
+</html>
